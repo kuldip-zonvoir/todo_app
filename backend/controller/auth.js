@@ -12,7 +12,7 @@ const crypto = require("crypto");
 
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const User = require("../models/user.model");
+const User = require("../models/user");
 
 // SignUp Controller
 exports.signup = (req, res) => {

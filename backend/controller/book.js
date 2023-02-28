@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Book = require("../models/Book");
+const Book = require("../models/book");
 
 exports.addBook = (req, res) => {
   const { title, publication, author } = req.body;
