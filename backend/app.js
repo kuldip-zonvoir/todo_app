@@ -17,7 +17,9 @@ app.use("/api/books", bookRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/authors", authorRoutes);
 __dirname = path.resolve();
+console.log("current dir", __dirname);
 if (process.env.NODE_ENV) {
+  console.log("Setting node env true", process.env.NODE_ENV);
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) => {
