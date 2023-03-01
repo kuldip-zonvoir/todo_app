@@ -5,18 +5,20 @@ const app = express();
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 dotenv.config();
+const corsOpts = {
+  origin: "*",
+
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+
+  allowedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOpts));
 const userRoutes = require("./routes/users");
 const authorRoutes = require("./routes/author");
 const bookRoutes = require("./routes/book");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static("public"));
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  })
-);
 // App routesn to handle requests
 
 app.use("/api/books", bookRoutes);
