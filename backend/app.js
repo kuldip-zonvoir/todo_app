@@ -30,10 +30,7 @@ if (process.env.NODE_ENV) {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) => {
-    console.log(
-      res,
-      path.resolve(__dirname, "frontend", "build", "index.html")
-    );
+    console.log(path.resolve(__dirname, "frontend", "build", "index.html"));
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 } else {
