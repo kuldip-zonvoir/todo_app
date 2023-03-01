@@ -10,7 +10,7 @@ const authorRoutes = require("./routes/author");
 const bookRoutes = require("./routes/book");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(
   cors({
     origin: "*",
@@ -25,10 +25,13 @@ app.use("/api/authors", authorRoutes);
 __dirname = path.resolve();
 console.log("current dir", __dirname);
 if (process.env.NODE_ENV) {
-  console.log("Setting node env true", process.env.NODE_ENV);
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) => {
+    console.log(
+      res,
+      path.resolve(__dirname, "frontend", "build", "index.html")
+    );
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 } else {
