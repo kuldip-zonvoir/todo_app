@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -10,7 +11,12 @@ const bookRoutes = require("./routes/book");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
 // App routesn to handle requests
 
 app.use("/api/books", bookRoutes);
